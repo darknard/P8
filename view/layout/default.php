@@ -2,20 +2,33 @@
 <html lang="fr">
 
 <head>
-    <title>BLOG</title>
     <meta charset=utf-8>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><?php echo isset($title_for_layout)?$title_for_layout:'Mon Blog'; ?></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <div class="container">
+	<div class="topbar">
+		<div class="topbar-inner">
+			<div class="container">
+				<h3><a href="#">Mon Blog</a></h3>
+				<ul class="nav">
+					<?php foreach($pages as $p):?>
+						<li><a href="<?php echo BASE_URL.'/pages/view/'.$p->id; ?>" title="<?php echo $p->name; ?>"><?php echo $p->name; ?>></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <div class="container" style="padding-top: 60px;">
         <?php echo $content_for_layout; ?>
     </div>
 
 <footer>
-    </footer>
+    </footer> 
 
 </body>
 

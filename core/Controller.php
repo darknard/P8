@@ -31,7 +31,24 @@ class Controller{
             $this->vars += $key;
         }else{
             $this->vars[$keys] = $value;
-        }
+        } 
     }
+
+    function loadModel($name){
+        $file = ROOT.DS. 'model' .DS.$name.'.php';
+        require_once($file);
+        if(!isset($this->$name)){
+            $this->$name = new $name();
+        }
+        
+    }
+
+    function e404($message){
+        header("HTTP/1.0 404 Not Found");
+        $this->set('message', $message);
+        $this->render('/errors.404');
+        die();
+    }
+
 }
 ?>
